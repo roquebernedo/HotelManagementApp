@@ -9,6 +9,7 @@ import cookieParser from "cookie-parser";
 const app = express()
 const { CLIENT_URL } = process.env;
 
+console.log("client url")
 console.log(CLIENT_URL)
 
 const whitelist = {
@@ -18,7 +19,7 @@ const whitelist = {
 app.set("trust proxy", 1);
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://127.0.0.1:3000',
+    origin: 'http://localhost:3000',
     credentials: true
 }));
 

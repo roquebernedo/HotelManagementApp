@@ -2,6 +2,11 @@ import User from '../apiServices/user/model.js'
 import jwt from "jsonwebtoken";
 
 const tokenExtractor = (req, res, next) => {
+
+    if (req.cookies?.userToken) {
+        req.token = req.cookies.userToken;
+        return next();
+    }
     const authorization = req.get('authorization')
     console.log(authorization)
     if(authorization && authorization.startsWith('Bearer ')){
@@ -58,8 +63,24 @@ const verifyToken = async (req, res, next) => {
     }
 }
 
+const verifyRole = async (req, res, next) => {
+    try {
+        console.log("this is verifyRole")
+        const { role } = req.user
+        console.log(role)
+        if (!role) return res.json({ error: 'Rol no definido.' })
+        if (role !== 'admin' && role !== 'master') return res.json({ error: 'Permisos insuficientes.' })
+
+        next()
+    } catch (err) {
+        console.log(err);
+        return res.json({ error: "verifyRole error: " + err });
+    }
+}
+
 export {
     verifyJWT,
     verifyToken,
-    tokenExtractor
+    tokenExtractor,
+    verifyRole
 }

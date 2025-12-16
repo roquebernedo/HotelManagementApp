@@ -68,6 +68,14 @@ const login = async (req, res, next) => {
                     expiresIn: '24h', // 24 hrs
                 }) 
 
+                res.cookie("userToken", token, {
+                    httpOnly: false,     // <--- IMPORTANTE: si quieres leer con JS
+                    secure: false,       // <--- EN LOCAL DEBE SER FALSE
+                    sameSite: "lax",     // <--- Permite funcionamiento en localhost
+                    path: "/",
+                    maxAge: 24 * 60 * 60 * 1000 // 1 día
+                });
+
                 return res.json(
                     {
                         message: `Hola ${user_name.split(' ')[0]}!`,
