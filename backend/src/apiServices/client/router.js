@@ -7,6 +7,6 @@ router.post('/', tokenExtractor, verifyToken ,createClient)
 router.get('/', tokenExtractor, verifyToken, getClient)
 router.get('/all', tokenExtractor, verifyToken, getAllClients)
 router.put('/', tokenExtractor, verifyToken, editClient)
-router.delete('/delete', tokenExtractor, verifyToken, verifyRole, deleteClient)
+router.delete('/', tokenExtractor, verifyToken, verifyRole, deleteClient)
 
 export { router }

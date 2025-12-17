@@ -3,7 +3,7 @@ import Reservation from "../reservation/model.js"
 import { dateSort } from "../../utils/sorter.js";
 
 //? update cabin's current reservation
-export const updateCabinReservs = async (room_id) => {
+export const updateRoomReservs = async (room_id) => {
     const room = await Room.findById(room_id),
         today = new Date(new Date().toLocaleDateString('en'))
 
