@@ -49,7 +49,21 @@ const addToRoomList = async (room, id, checkin, checkout) => {
     return
 }
 
+const removeFromRoom = async (room, id) => {
+    await Room.findByIdAndUpdate(room,
+        {
+            "$pull": {
+                reservations: {
+                    reservation_id: id
+                }
+            }
+        }
+    )
+    return
+}
+
 export {
     overlapDetector,
-    addToRoomList
+    addToRoomList,
+    removeFromRoom
 }

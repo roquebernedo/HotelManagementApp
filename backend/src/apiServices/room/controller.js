@@ -113,8 +113,8 @@ const editRoom = async(req, res, next) => {
         console.log("editRoom line 113")
         console.log(id)
         if (!id) return res.json({ error: 'No ID' })
-        if (!name) return res.json({ error: 'No cabin name' })
-        if (!capacity) return res.json({ error: 'No cabin capacity' })
+        if (!name) return res.json({ error: 'No room name' })
+        if (!capacity) return res.json({ error: 'No room capacity' })
 
         // verificar que el nombre no se encuentre en uso
         const nameInUse = await Room.findOne({ name })
@@ -155,7 +155,7 @@ const changeAvailability = async (req, res, next) => {
         if(!id) return res.json({ error: 'No ID' })
 
         const targetRoom = await Room.findById(id)
-        if(!targetRoom) return res.json({ error: 'No existen cabinas con ese ID.' })
+        if(!targetRoom) return res.json({ error: 'No existen cuartos con ese ID.' })
         console.log(targetRoom)
         targetRoom.enabled = !targetRoom.enabled
         await targetRoom.save()

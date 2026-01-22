@@ -102,3 +102,60 @@ export const registerEntry = async (data, creator, reservation) => {
 
     return
 }
+
+export const registerUpdatedEntries = async (data, reservation, editor) => {
+    const {
+        client,
+        amount,
+        currency,
+        paymentDate,
+        paymentType,
+        extraPayments
+    } = data
+    console.log(client)
+    if (!client) return
+
+    const clientData = await Client.findById(client)
+
+    const entry = {
+        date: paymentDate,
+        entryType: 'income',
+        description: `Reserva de ${clientData.name} (${clientData.nationality})${!!extraPayments?.length ? ' - Pago #1' : ''}`,
+        paymentType,
+        amount,
+        currency,
+        reservation,
+        editor
+    }
+
+    await saveEntries(entry, paymentDate, extraPayments)
+
+    return
+}
+
+export const registerQuickEntry = async (data, editor, reservation) => {
+    const {
+        client,
+        amount,
+        currency,
+        paymentDate,
+        paymentType
+    } = data
+
+    if (!client) return
+
+    const clientData = await Client.findById(client)
+
+    const entry = {
+        date: paymentDate,
+        entryType: 'income',
+        description: `Reserva de ${clientData.name} (${clientData.nationality}) - Pago Extra`,
+        paymentType,
+        amount,
+        currency,
+        reservation,
+        editor
+    }
+
+    await saveEntries(entry, paymentDate)
+}

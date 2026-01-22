@@ -116,10 +116,11 @@ const editClient = async (req, res, next) => {
             },
             { new: true }
         )
+    
         console.log(newClient)
         const allClients = await Client.find()
         return res.json({ message: 'Cliente actualizado exitosamente.', newClient, clientList: allClients })
-
+        
     } catch(error){
         next(error)
     }
