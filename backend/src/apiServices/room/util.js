@@ -2,12 +2,12 @@ import Room from "./model.js";
 import Reservation from "../reservation/model.js"
 import { dateSort } from "../../utils/sorter.js";
 
-//? update cabin's current reservation
+//? update room's current reservation
 export const updateRoomReservs = async (room_id) => {
     const room = await Room.findById(room_id),
         today = new Date(new Date().toLocaleDateString('en'))
 
-    if (!room) return { error: 'No cabins with that ID' }
+    if (!room) return { error: 'No rooms with that ID' }
 
     if (room.current_guest) {
         // current_guest es una ID de reserva

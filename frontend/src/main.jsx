@@ -1,13 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import { NotificationsProvider } from 'reapop'
+import App from '@/App'
+import '@/index.css'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+//: TODO learn about the provider function https://swr.vercel.app/docs/advanced/cache
+//: TODO error handling for notifications https://swr.vercel.app/docs/error-handling
+ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
-      <App />
+        <NotificationsProvider>
+            <App />
+        </NotificationsProvider>
     </BrowserRouter>
-  </StrictMode>,
 )

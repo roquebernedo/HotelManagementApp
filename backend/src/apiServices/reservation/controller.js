@@ -60,7 +60,7 @@ const createReservation = async (req, res, next) => {
         } = req.body
         console.log(user_name)
         console.log(client)
-
+        console.log(room)
         if (!client) return res.json({ error: 'No client ID' })
         if (!checkin) return res.json({ error: 'No checkin' })
         if (!checkout) return res.json({ error: 'No checkout' })
