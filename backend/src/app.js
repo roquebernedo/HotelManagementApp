@@ -19,8 +19,9 @@ const whitelist = {
 app.set("trust proxy", 1);
 app.use(cookieParser());
 app.use(cors({
-    origin: CLIENT_URL,
-    credentials: true
+    origin: whitelist,
+    credentials:true,        
+    optionSuccessStatus:200
 }));
 
 console.log("holitas")
