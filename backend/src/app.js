@@ -18,10 +18,10 @@ const whitelist = {
 
 app.set("trust proxy", 1);
 app.use(cookieParser());
+
 app.use(cors({
-    origin: whitelist,
-    credentials:true,        
-    optionSuccessStatus:200
+    origin: 'https://roanhotel.netlify.app',
+    credentials: true
 }));
 
 console.log("holitas")
