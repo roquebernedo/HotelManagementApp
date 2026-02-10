@@ -7,13 +7,13 @@ import router from "./routes/index.js";
 import cookieParser from "cookie-parser";
 
 const app = express()
-const { CLIENT_URL } = process.env;
+const { BACKEND_URL } = process.env;
 
 console.log("client url")
-console.log(CLIENT_URL)
+console.log(BACKEND_URL)
 
 const whitelist = {
-    origin: ['http://localhost:3000', CLIENT_URL,]
+    origin: ['http://localhost:3000', BACKEND_URL,]
 }
 
 app.set("trust proxy", 1);
