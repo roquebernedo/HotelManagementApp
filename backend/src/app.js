@@ -7,19 +7,19 @@ import router from "./routes/index.js";
 import cookieParser from "cookie-parser";
 
 const app = express()
-const { BACKEND_URL } = process.env;
+const { CLIENT_URL } = process.env;
 
 console.log("client url")
-console.log(BACKEND_URL)
+console.log(CLIENT_URL)
 
 const whitelist = {
-    origin: ['http://localhost:3000', BACKEND_URL,]
+    origin: ['http://localhost:3000', CLIENT_URL,]
 }
 
 app.set("trust proxy", 1);
 app.use(cookieParser());
 app.use(cors({
-    origin: whitelist,
+    origin: 'https://rqhotel.netlify.app/',
     credentials: true
 }));
 
