@@ -3,8 +3,8 @@ import { deleteCookie, getCookie, setCookie } from "@/utils/cookies";
 
 // const BACK_URL = import.meta.env.VITE_BACK_URL
 //http://localhost:3001
-// https://hotelmanagementapp-5slj.onrender.com/
-const BACK_URL = "http://localhost:3001"
+// https://hotelmanagementapp-5slj.onrender.com
+const BACK_URL = "https://hotelmanagementapp-5slj.onrender.com"
 
 // const config = {
 //     //: TODO: set waiting for response time (failsafe for fatal errors on server and to avoid infinite loadings)
