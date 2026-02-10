@@ -19,7 +19,7 @@ const whitelist = {
 app.set("trust proxy", 1);
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://rqhotel.netlify.app/',
+    origin: 'https://rqhotel.netlify.app',
     credentials: true
 }));
 
