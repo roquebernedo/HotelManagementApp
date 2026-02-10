@@ -12,7 +12,7 @@ const BACK_URL = "https://hotelmanagementapp-5slj.onrender.com"
 //         Authorization: getCookie('userToken')
 //     }
 // };
-
+console.log("entro")
 export const api = async (key) => {
     console.log("entro a api")
     const { data: response } = await axios(BACK_URL + key, {
